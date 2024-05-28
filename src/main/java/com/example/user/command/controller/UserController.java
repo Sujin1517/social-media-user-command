@@ -1,6 +1,5 @@
 package com.example.user.command.controller;
 
-import com.example.user.command.dto.request.UserEditRequest;
 import com.example.user.command.entity.User;
 import com.example.user.command.kafka.dto.KafkaStatus;
 import com.example.user.command.kafka.producer.UserProducer;
