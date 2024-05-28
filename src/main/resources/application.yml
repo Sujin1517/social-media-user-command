@@ -1,1 +1,8 @@
-spring.application.name=user.command
+spring:
+  application:
+    name: user.command
+server:
+  port: 8080
+kafka:
+  topic:
+    name: user-events
