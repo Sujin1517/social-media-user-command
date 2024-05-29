@@ -1,7 +1,7 @@
 package com.example.user.command.kafka.producer;
 
-import com.example.user.command.entity.User;
-import com.example.user.command.kafka.dto.KafkaStatus;
+import com.example.user.command.domain.dto.KafkaStatus;
+import com.example.user.command.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;

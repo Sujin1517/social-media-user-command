@@ -1,4 +1,4 @@
-package com.example.user.command.kafka.dto;
+package com.example.user.command.domain.dto;
 
 public record KafkaStatus<T>(
         T data,
