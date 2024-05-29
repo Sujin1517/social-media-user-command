@@ -44,7 +44,6 @@ public class UserController {
     ){
         User user = User.builder()
                 .user_id(id)
-                .user_name(req.getUser_name())
                 .user_image(req.getUser_image())
                 .user_name(req.getUser_name())
                 .user_desc(req.getUser_desc())
