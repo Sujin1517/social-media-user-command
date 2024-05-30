@@ -12,13 +12,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter @Builder
 public class User {
-    private UUID user_id;
-    private String user_phone;
-    private String user_name;
-    private String user_image;
-    private String user_desc;
-    private Date user_create_at;
-    private Integer user_total_post;
-    private Integer user_total_like;
-    private Boolean user_disable;
+    private UUID id;
+    private String password;
+    private String phone;
+    private String name;
+    private String image;
+    private String desc;
+    private Date createdAt;
+    private Integer totalPost;
+    private Integer totalLike;
+    private Integer totalFollower;
+    private Boolean isDisable;
 }
