@@ -34,7 +34,7 @@ public class UserController {
                 .build();
         KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "insert");
         kafkaList.add(userKafkaStatus);
-        userProducer.send(user, "insert");
+        userProducer.send(user, "insertUser");
         kafkaList.remove(userKafkaStatus);
     }
 
@@ -51,7 +51,7 @@ public class UserController {
                 .build();
         KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "update");
         kafkaList.add(userKafkaStatus);
-        userProducer.send(user, "update");
+        userProducer.send(user, "updateUser");
         kafkaList.remove(userKafkaStatus);
     }
 
@@ -60,8 +60,56 @@ public class UserController {
         User user = User.builder().id(id).build();
         KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "delete");
         kafkaList.add(userKafkaStatus);
-        userProducer.send(user, "delete");
+        userProducer.send(user, "deleteUser");
         kafkaList.remove(userKafkaStatus);
+    }
+
+
+    @PostMapping("{userId}/followers/{followerId}")
+    public void addFollower(
+            @PathVariable UUID userId,
+            @PathVariable UUID followerId
+    ) {
+
+    }
+    @DeleteMapping("{userId}/followers/{followerId}")
+    public void deleteFollower(
+            @PathVariable UUID userId,
+            @PathVariable UUID followerId
+    ) {
+
+    }
+
+
+    @PostMapping("{userId}/block/users/{blockedUserId}")
+    public void addBlockUser(
+            @PathVariable UUID userId,
+            @PathVariable UUID blockedUserId
+    ) {
+
+    }
+    @DeleteMapping("{userId}/block/users/{blockedUserId}")
+    public void deleteBlockUser(
+            @PathVariable UUID userId,
+            @PathVariable UUID blockedUserId
+    ) {
+
+    }
+
+
+    @PostMapping("{userId}/block/keyword/{keyword}")
+    public void addBlockKeyword(
+            @PathVariable UUID userId,
+            @PathVariable String keyword
+    ) {
+
+    }
+    @DeleteMapping("{userId}/block/keyword/{keyword}")
+    public void deleteBlockKeyword(
+            @PathVariable UUID userId,
+            @PathVariable String keyword
+    ) {
+
     }
 
 
