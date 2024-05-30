@@ -1,6 +1,10 @@
 spring:
   application:
     name: user.command
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 server:
   port: 8001
 kafka:

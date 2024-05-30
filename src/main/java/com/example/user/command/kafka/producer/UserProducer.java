@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class UserProducer {
     private final KafkaTemplate<String, KafkaStatus<User>> kafkaTemplate;
-    @Value("${kafka.topic.name}") private final String topic;
+    @Value("${kafka.topic.name}") private String topic;
 
     @Bean
     private NewTopic newTopic() {

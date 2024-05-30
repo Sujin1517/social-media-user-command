@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/vi/users")
+@RequestMapping("/api/v1/users")
 @RequiredArgsConstructor
 public class UserController {
     private final UserProducer userProducer;
@@ -24,12 +24,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     public void createUser(@RequestBody User req){
         User user = User.builder()
-                .user_id(UUID.randomUUID())
-                .user_phone(req.getUser_phone())
-                .user_name(req.getUser_name())
-                .user_image(req.getUser_image())
-                .user_desc(req.getUser_desc())
-                .user_create_at(new Date())
+                .id(UUID.randomUUID())
+                .phone(req.getPhone())
+                .name(req.getName())
+                .image(req.getImage())
+                .desc(req.getDesc())
+                .createdAt(new Date())
                 .build();
         KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "insert");
         kafkaList.add(userKafkaStatus);
@@ -43,10 +43,10 @@ public class UserController {
             @RequestBody User req
     ){
         User user = User.builder()
-                .user_id(id)
-                .user_image(req.getUser_image())
-                .user_name(req.getUser_name())
-                .user_desc(req.getUser_desc())
+                .id(id)
+                .image(req.getImage())
+                .name(req.getName())
+                .desc(req.getDesc())
                 .build();
         KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "update");
         kafkaList.add(userKafkaStatus);
@@ -56,7 +56,7 @@ public class UserController {
 
     @DeleteMapping("{id}")
     public void deleteUser(@PathVariable UUID id) {
-        User user = User.builder().user_id(id).build();
+        User user = User.builder().id(id).build();
         KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "delete");
         kafkaList.add(userKafkaStatus);
         userProducer.send(user, "delete");
