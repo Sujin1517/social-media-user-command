@@ -25,6 +25,7 @@ public class UserController {
     public void createUser(@RequestBody User req){
         User user = User.builder()
                 .id(UUID.randomUUID())
+                .password(req.getPassword())
                 .phone(req.getPhone())
                 .name(req.getName())
                 .image(req.getImage())

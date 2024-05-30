@@ -13,6 +13,7 @@ import java.util.UUID;
 @Getter @Builder
 public class User {
     private UUID id;
+    private String password;
     private String phone;
     private String name;
     private String image;
