@@ -32,7 +32,7 @@ public class UserController {
                 .desc(req.getDesc())
                 .createdAt(new Date())
                 .build();
-        KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "insert");
+        KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "insertUser");
         kafkaList.add(userKafkaStatus);
         userProducer.send(user, "insertUser");
         kafkaList.remove(userKafkaStatus);
@@ -49,7 +49,7 @@ public class UserController {
                 .name(req.getName())
                 .desc(req.getDesc())
                 .build();
-        KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "update");
+        KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "updateUser");
         kafkaList.add(userKafkaStatus);
         userProducer.send(user, "updateUser");
         kafkaList.remove(userKafkaStatus);
@@ -58,7 +58,7 @@ public class UserController {
     @DeleteMapping("{id}")
     public void deleteUser(@PathVariable UUID id) {
         User user = User.builder().id(id).build();
-        KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "delete");
+        KafkaStatus<User> userKafkaStatus = new KafkaStatus<>(user, "deleteUser");
         kafkaList.add(userKafkaStatus);
         userProducer.send(user, "deleteUser");
         kafkaList.remove(userKafkaStatus);
